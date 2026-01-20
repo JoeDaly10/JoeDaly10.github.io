@@ -5,11 +5,12 @@
   <title>Roof Box Hire</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    /* --- Global Styles --- */
     body { font-family: Arial, sans-serif; margin: 0; background: #f7f7f7; }
     .container { max-width: 900px; margin: auto; padding: 20px; }
     header { background: #222; color: #fff; padding: 20px 0; text-align: center; }
-    .card { background: #fff; padding: 20px; margin-top: 20px; border-radius: 8px; }
     h1, h2 { margin-top: 0; }
+    .card { background: #fff; padding: 20px; margin-top: 20px; border-radius: 8px; }
     .price { font-size: 1.2em; font-weight: bold; }
     .cta {
       background: #28a745;
@@ -20,8 +21,6 @@
       text-decoration: none;
       margin-top: 10px;
     }
-
-    /* Floating WhatsApp button */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -39,45 +38,78 @@
 <body>
 
 <header>
-  <h1>Roof Box Hire</h1>
-  <p>Cheap, quick & easy roof box rental for camping and outdoor trips</p>
+  <h1 id="site-title">Roof Box Hire</h1>
+  <p id="site-subtitle">Cheap, quick & easy roof box rental for camping and outdoor trips</p>
 </header>
 
 <div class="container">
+  <!-- Prices Section -->
   <div class="card">
     <h2>Prices</h2>
-    <p class="price">£15 per night · £60 per week · £100 for 2 weeks</p>
+    <p class="price" id="price-text">£15 per night · £60 per week · £100 for 2 weeks</p>
   </div>
 
+  <!-- Why Choose Us Section -->
   <div class="card">
     <h2>Why Choose Us?</h2>
-    <ul>
+    <ul id="features-list">
       <li>Cheapest prices around</li>
       <li>Fast, simple booking</li>
       <li>Perfect for camping & outdoor adventures</li>
     </ul>
   </div>
 
+  <!-- Contact Section -->
   <div class="card">
     <h2>Contact</h2>
-    <p>Email: your@email.com</p>
-    <p>Phone: 07xxx xxxxxx</p>
+    <p>Email: <span id="contact-email">your@email.com</span></p>
+    <p>Phone: <span id="contact-phone">07xxx xxxxxx</span></p>
 
-    <!-- WhatsApp Contact Button -->
-    <a class="cta"
-       href="https://wa.me/447471772335?text=Hi%20I%20would%20like%20to%20book%20a%20roof%20box"
-       target="_blank">
+    <a class="cta" id="whatsapp-link" href="https://wa.me/447XXXXXXXXX?text=Hi%20I%20would%20like%20to%20book%20a%20roof%20box" target="_blank">
       Message us on WhatsApp
     </a>
   </div>
 </div>
 
 <!-- Floating WhatsApp Button -->
-<a class="whatsapp-float"
-   href="https://wa.me/447XXXXXXXXX?text=Hi%20I%20would%20like%20to%20book%20a%20roof%20box"
-   target="_blank">
+<a class="whatsapp-float" id="whatsapp-float-link" href="https://wa.me/447XXXXXXXXX?text=Hi%20I%20would%20like%20to%20book%20a%20roof%20box" target="_blank">
   WhatsApp
 </a>
+
+<script>
+  /* --- Editable content --- */
+  const siteTitle = "Roof Box Hire";
+  const siteSubtitle = "Cheap, quick & easy roof box rental for camping and outdoor trips";
+  const prices = "£15 per night · £60 per week · £100 for 2 weeks";
+  const features = [
+    "Cheapest prices around",
+    "Fast, simple booking",
+    "Perfect for camping & outdoor adventures"
+  ];
+  const phone = "07999 123456";
+  const whatsappNumber = "447999123456"; // No + sign
+  const whatsappMessage = "Hi I would like to book a roof box";
+
+  // --- Apply editable content ---
+  document.getElementById("site-title").innerText = siteTitle;
+  document.getElementById("site-subtitle").innerText = siteSubtitle;
+  document.getElementById("price-text").innerText = prices;
+
+  const featuresList = document.getElementById("features-list");
+  featuresList.innerHTML = "";
+  features.forEach(f => {
+    const li = document.createElement("li");
+    li.innerText = f;
+    featuresList.appendChild(li);
+  });
+
+  document.getElementById("contact-email").innerText = email;
+  document.getElementById("contact-phone").innerText = phone;
+
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  document.getElementById("whatsapp-link").href = whatsappLink;
+  document.getElementById("whatsapp-float-link").href = whatsappLink;
+</script>
 
 </body>
 </html>
