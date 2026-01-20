@@ -88,7 +88,11 @@
   /* --- Editable content --- */
   const siteTitle = "Roof Box Hire";
   const siteSubtitle = "Cheap, quick & easy roof box rental for camping and outdoor trips";
+
+  const aboutUsText = "We’re a local Merseyside business passionate about making roof box hire simple, affordable, and stress-free. Whether you’re heading on a weekend camping trip or a longer outdoor adventure, our 200L Thule roof boxes fit all roof bar types on all cars. With flexible fitting options and some of the cheapest prices in the area, we make it easy to get your gear on the road quickly and safely.";
+
   const prices = "£15 per night · £60 per week · £100 for 2 weeks";
+
   const features = [
     "Cheapest prices around in Merseyside",
     "Fast, simple booking",
@@ -96,16 +100,20 @@
     "Perfect for camping & outdoor adventures",
     "200L Thule roof box fits all roof bar types on all types of cars"
   ];
+
   const email = "info@roofboxhire.com";
   const phone = "07471772335";
+
   const whatsappNumber = "447471772335"; // UK WhatsApp format
   const whatsappMessage = "Hi I would like to book a roof box";
 
-  // --- Apply editable content ---
+  /* --- Apply editable content to HTML --- */
   document.getElementById("site-title").innerText = siteTitle;
   document.getElementById("site-subtitle").innerText = siteSubtitle;
+  document.getElementById("about-us-text").innerText = aboutUsText;
   document.getElementById("price-text").innerText = prices;
 
+  // Features list
   const featuresList = document.getElementById("features-list");
   featuresList.innerHTML = "";
   features.forEach(f => {
@@ -114,14 +122,13 @@
     featuresList.appendChild(li);
   });
 
+  // Contact info
   document.getElementById("contact-email").innerText = email;
   document.getElementById("contact-phone").innerText = phone;
 
+  // WhatsApp links
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
   document.getElementById("whatsapp-link").href = whatsappLink;
   document.getElementById("whatsapp-float-link").href = whatsappLink;
 </script>
 
-
-</body>
-</html>
