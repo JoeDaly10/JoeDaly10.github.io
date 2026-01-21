@@ -63,24 +63,14 @@
       font-size: 1.05rem;
     }
 
-    /* ===== GALLERY ===== */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      margin-top: 15px;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.03);
-    }
+ <!-- GALLERY -->
+<div class="card">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <img src="./images/roofbox1.jpg" alt="Thule roof box" onclick="openLightbox(this.src)">
+    <img src="./images/roofbox2.jpg" alt="Thule roof box side view" onclick="openLightbox(this.src)">
+  </div>
+</div>
 
     /* ===== LIGHTBOX ===== */
     .lightbox {
