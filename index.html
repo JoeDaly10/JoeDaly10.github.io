@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    /* ===== GLOBAL STYLES ===== */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -21,217 +20,115 @@
       text-align: center;
     }
 
-    header h1 {
-      font-size: 2rem;
+    header h1 { font-size: 2rem; margin: 0; }
+    header p { font-size: 1.1rem; margin-top: 10px; }
+
+    .container { max-width: 900px; margin: auto; padding: 15px; }
+    .card { background: #fff; padding: 20px; margin-top: 20px; border-radius: 10px; }
+    h2 { margin-top: 0; }
+    .price { font-size: 1.4em; font-weight: bold; }
+    .cta { background: #28a745; color: #fff; padding: 14px 22px; display: inline-block; border-radius: 6px; text-decoration: none; margin-top: 12px; font-size: 1.05rem; }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
     }
 
-    header p {
-      font-size: 1.1rem;
-      margin-top: 10px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 15px;
-    }
-
-    .card {
-      background: #fff;
-      padding: 20px;
-      margin-top: 20px;
+    .gallery img {
+      width: 100%;
       border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
     }
 
-    h2 {
-      margin-top: 0;
-    }
-
-    .price {
-      font-size: 1.4em;
-      font-weight: bold;
-    }
-
-    .cta {
-      background: #28a745;
-      color: #fff;
-      padding: 14px 22px;
-      display: inline-block;
-      border-radius: 6px;
-      text-decoration: none;
-      margin-top: 12px;
-      font-size: 1.05rem;
-    }
-
- <!-- GALLERY -->
-<div class="card">
-  <h2>Gallery</h2>
-  <div class="gallery">
-<img src="images/roofbox1.jpg" alt="Thule roof box" onclick="openLightbox(this.src)">
-    <img src="images/roofbox2.jpg" alt="Thule roof box side view" onclick="openLightbox(this.src)">
-
-  </div>
-</div>
+    .gallery img:hover { transform: scale(1.03); }
 
     /* ===== LIGHTBOX ===== */
     .lightbox {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
       align-items: center;
       justify-content: center;
       z-index: 1000;
       padding: 15px;
     }
 
-    .lightbox img {
-      max-width: 95%;
-      max-height: 90%;
-      border-radius: 10px;
-    }
+    .lightbox img { max-width: 95%; max-height: 90%; border-radius: 10px; }
+    .lightbox.show { display: flex; }
 
-    .lightbox.close {
-      cursor: pointer;
-    }
-
-    /* ===== MOBILE POLISH ===== */
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.6rem;
-      }
-
-      header p {
-        font-size: 1rem;
-      }
-
-      .card {
-        padding: 16px;
-      }
-
-      .cta {
-        width: 100%;
-        text-align: center;
-        font-size: 1.1rem;
-      }
+      header h1 { font-size: 1.6rem; }
+      header p { font-size: 1rem; }
+      .card { padding: 16px; }
+      .cta { width: 100%; text-align: center; font-size: 1.1rem; }
     }
   </style>
 </head>
 
 <body>
-
 <header>
-  <h1 id="site-title"></h1>
-  <p id="site-subtitle"></p>
+  <h1>Merseyside Roof Box Hire</h1>
+  <p>Doubling your boot space with cheap, quick & easy roof box rental for camping and outdoor trips.</p>
 </header>
 
 <div class="container">
-
   <!-- ABOUT -->
   <div class="card">
     <h2>About Us</h2>
-    <p id="about-us-text"></p>
+    <p>We’re a local Merseyside business passionate about making roof box hire simple, affordable, and stress-free. Our 200L Thule roof boxes fit all roof bar types on all cars.</p>
   </div>
 
   <!-- GALLERY -->
   <div class="card">
     <h2>Gallery</h2>
     <div class="gallery">
-      <img src="images/roofbox1.jpg" alt="Thule roof box" onclick="openLightbox(this.src)">
-      <img src="images/roofbox2.jpg" alt="Thule roof box side view" onclick="openLightbox(this.src)">
+      <img src="images/roofbox1.jpg" alt="Thule roof box" onclick="openLightbox(this)">
+      <img src="images/roofbox2.jpg" alt="Thule roof box side view" onclick="openLightbox(this)">
     </div>
   </div>
 
   <!-- PRICES -->
   <div class="card">
     <h2>Prices</h2>
-    <p class="price" id="price-text"></p>
-  </div>
-
-  <!-- FEATURES -->
-  <div class="card">
-    <h2>Why Choose Us?</h2>
-    <ul id="features-list"></ul>
+    <p class="price">£15 per night · £60 per week · £100 for 2 weeks</p>
   </div>
 
   <!-- CONTACT -->
   <div class="card">
     <h2>Contact</h2>
-    <p>Email: <span id="contact-email"></span></p>
-    <p>Phone: <span id="contact-phone"></span></p>
-
-    <a class="cta" id="whatsapp-link" target="_blank">
+    <p>Email: info@roofboxhire.com</p>
+    <p>Phone: 07471772335</p>
+    <a class="cta" href="https://wa.me/447471772335?text=Hi%20I%20would%20like%20to%20book%20a%20roof%20box" target="_blank">
       Message us on WhatsApp
     </a>
   </div>
-
 </div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img">
+  <img id="lightbox-img" src="">
 </div>
 
 <script>
-  /* ===== EDITABLE CONTENT ===== */
-
-  const siteTitle = "Merseyside Roof Box Hire";
-  const siteSubtitle =
-    "Doubling your boot space with cheap, quick & easy roof box rental for camping and outdoor trips.";
-
-  const aboutUsText =
-    "We’re a local Merseyside business passionate about making roof box hire simple, affordable, and stress-free. Whether you’re heading on a weekend camping trip or a longer outdoor adventure, our 200L Thule roof boxes fit all roof bar types on all cars. With flexible fitting options and some of the cheapest prices in the area, we make it easy to get your gear on the road quickly and safely.";
-
-  const prices = "£15 per night · £60 per week · £100 for 2 weeks";
-
-  const features = [
-    "Cheapest prices in Merseyside",
-    "Flexible fitting options available",
-    "Fast and simple booking",
-    "Perfect for camping & outdoor trips",
-    "200L Thule roof box fits all roof bar types on all cars"
-  ];
-
-  const email = "info@roofboxhire.com";
-  const phone = "07471772335";
-  const whatsappNumber = "447471772335";
-  const whatsappMessage = "Hi I would like to book a roof box";
-
-  /* ===== PAGE LOGIC ===== */
-
-  document.getElementById("site-title").innerText = siteTitle;
-  document.getElementById("site-subtitle").innerText = siteSubtitle;
-  document.getElementById("about-us-text").innerText = aboutUsText;
-  document.getElementById("price-text").innerText = prices;
-
-  const list = document.getElementById("features-list");
-  features.forEach(item => {
-    const li = document.createElement("li");
-    li.innerText = item;
-    list.appendChild(li);
-  });
-
-  document.getElementById("contact-email").innerText = email;
-  document.getElementById("contact-phone").innerText = phone;
-
-  const whatsappURL =
-    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-  document.getElementById("whatsapp-link").href = whatsappURL;
-
-  /* ===== LIGHTBOX ===== */
-
-  function openLightbox(src) {
-    document.getElementById("lightbox-img").src = src;
-    document.getElementById("lightbox").style.display = "flex";
+  function openLightbox(imgElement) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = imgElement.src;
+    lightbox.classList.add('show');
   }
 
   function closeLightbox() {
-    document.getElementById("lightbox").style.display = "none";
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('show');
   }
 </script>
 
 </body>
 </html>
+
