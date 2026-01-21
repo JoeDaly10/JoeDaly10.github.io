@@ -123,29 +123,3 @@
 
   const whatsappNumber = "447471772335"; // UK WhatsApp format
   const whatsappMessage = "Hi I would like to book a roof box";
-
-  /* --- Apply editable content to HTML --- */
-  document.getElementById("site-title").innerText = siteTitle;
-  document.getElementById("site-subtitle").innerText = siteSubtitle;
-  document.getElementById("about-us-text").innerText = aboutUsText;
-  document.getElementById("price-text").innerText = prices;
-
-  // Features list
-  const featuresList = document.getElementById("features-list");
-  featuresList.innerHTML = "";
-  features.forEach(f => {
-    const li = document.createElement("li");
-    li.innerText = f;
-    featuresList.appendChild(li);
-  });
-
-  // Contact info
-  document.getElementById("contact-email").innerText = email;
-  document.getElementById("contact-phone").innerText = phone;
-
-  // WhatsApp links
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-  document.getElementById("whatsapp-link").href = whatsappLink;
-  document.getElementById("whatsapp-float-link").href = whatsappLink;
-</script>
-
