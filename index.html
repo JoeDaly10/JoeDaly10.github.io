@@ -10,15 +10,13 @@
           background: #f7f7f7; } 
       .container { max-width: 900px; margin: auto; padding: 
         20px; } 
-      header { background: #222; color: #fff; padding: 20px 
-        0; text-align: center; } 
-      h1, h2 { margin-top: 0; } 
-      .card { background: #fff; padding: 20px; margin-top: 
-        20px; border-radius: 8px; } 
-      .price { font-size: 1.2em; font-weight: bold; } 
-      .cta { 
-        background: #28a745; 
-  
+<header>
+  <h1 id="site-title"></h1>
+  <p id="site-subtitle"></p>
+</header>
+
+<div class="container">
+
   <!-- About Us -->
   <div class="card">
     <h2>About Us</h2>
@@ -51,6 +49,9 @@
 
 </div>
 
+<a class="whatsapp-float" id="whatsapp-float-link" target="_blank">
+  WhatsApp
+</a>
 <script>
   /* ===== EDIT ONLY THIS SECTION ===== */
 
@@ -75,6 +76,7 @@
   const email = "info@roofboxhire.com";
   const phone = "07471772335";
   const whatsappNumber = "447471772335";
+  const whatsappMessage = "Hi I would like to book a roof box";
 
   /* ===== DO NOT EDIT BELOW ===== */
 
@@ -100,4 +102,5 @@
   document.getElementById("whatsapp-link").href = whatsappLink;
   document.getElementById("whatsapp-float-link").href = whatsappLink;
 </script>
+
 
