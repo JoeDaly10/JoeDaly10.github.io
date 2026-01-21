@@ -1,70 +1,74 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-  <head> 
-    <meta charset="UTF-8"> 
-    <title>Merseyside Roof Box Hire</title> 
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Merseyside Roof Box Hire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f7f7f7;
-  }
+  <style>
+    /* ===== GLOBAL STYLES ===== */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+    }
 
-  .container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-  }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 25px 15px;
+      text-align: center;
+    }
 
-  header {
-    background: #222;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-  }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
 
-  h1, h2 {
-    margin-top: 0;
-  }
+    h1, h2 {
+      margin-top: 0;
+    }
 
-  .card {
-    background: #fff;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-  }
+    .card {
+      background: #fff;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
 
-  .price {
-    font-size: 1.2em;
-    font-weight: bold;
-  }
+    .price {
+      font-size: 1.3em;
+      font-weight: bold;
+    }
 
-  .cta {
-    background: #28a745;
-    color: #fff;
-    padding: 12px 20px;
-    display: inline-block;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-  }
+    .cta {
+      background: #28a745;
+      color: #fff;
+      padding: 12px 20px;
+      display: inline-block;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
 
-  .whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    color: #fff;
-    border-radius: 50px;
-    padding: 12px 18px;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-</style>
+    /* ===== GALLERY ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
 
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
 
 <header>
   <h1 id="site-title"></h1>
@@ -73,26 +77,34 @@
 
 <div class="container">
 
-  <!-- About Us -->
+  <!-- ABOUT US -->
   <div class="card">
     <h2>About Us</h2>
     <p id="about-us-text"></p>
-    <img id="about-image" alt="Roof box hire" style="width:100%; border-radius:8px; margin-top:15px;">
   </div>
 
-  <!-- Prices -->
+  <!-- GALLERY -->
+  <div class="card">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="images/roofbox1.jpg" alt="Thule roof box fitted to car">
+      <img src="images/roofbox2.jpg" alt="Thule roof box side view">
+    </div>
+  </div>
+
+  <!-- PRICES -->
   <div class="card">
     <h2>Prices</h2>
     <p class="price" id="price-text"></p>
   </div>
 
-  <!-- Why Choose Us -->
+  <!-- WHY CHOOSE US -->
   <div class="card">
     <h2>Why Choose Us?</h2>
     <ul id="features-list"></ul>
   </div>
 
-  <!-- Contact -->
+  <!-- CONTACT -->
   <div class="card">
     <h2>Contact</h2>
     <p>Email: <span id="contact-email"></span></p>
@@ -105,28 +117,24 @@
 
 </div>
 
-<a class="whatsapp-float" id="whatsapp-float-link" target="_blank">
-  WhatsApp
-</a>
 <script>
-  /* ===== EDIT ONLY THIS SECTION ===== */
+  /* ===== EDITABLE CONTENT ===== */
 
   const siteTitle = "Merseyside Roof Box Hire";
-  const siteSubtitle = "Doubling your boot space with cheap, quick & easy roof box rental for camping and outdoor trips.";
+  const siteSubtitle =
+    "Doubling your boot space with cheap, quick & easy roof box rental for camping and outdoor trips.";
 
   const aboutUsText =
     "We’re a local Merseyside business passionate about making roof box hire simple, affordable, and stress-free. Whether you’re heading on a weekend camping trip or a longer outdoor adventure, our 200L Thule roof boxes fit all roof bar types on all cars. With flexible fitting options and some of the cheapest prices in the area, we make it easy to get your gear on the road quickly and safely.";
 
-  const aboutImage = "images/roofbox.jpg";
-
   const prices = "£15 per night · £60 per week · £100 for 2 weeks";
 
   const features = [
-    "Cheapest prices around in Merseyside",
-    "Fast, simple booking",
-    "Flexible fitting options for your car",
-    "Perfect for camping & outdoor adventures",
-    "200L Thule roof box fits all roof bar types on all types of cars"
+    "Cheapest prices in Merseyside",
+    "Flexible fitting options available",
+    "Fast and simple booking",
+    "Perfect for camping & outdoor trips",
+    "200L Thule roof box fits all roof bar types on all cars"
   ];
 
   const email = "info@roofboxhire.com";
@@ -139,13 +147,12 @@
   document.getElementById("site-title").innerText = siteTitle;
   document.getElementById("site-subtitle").innerText = siteSubtitle;
   document.getElementById("about-us-text").innerText = aboutUsText;
-  document.getElementById("about-image").src = aboutImage;
   document.getElementById("price-text").innerText = prices;
 
   const featuresList = document.getElementById("features-list");
-  features.forEach(item => {
+  features.forEach(text => {
     const li = document.createElement("li");
-    li.innerText = item;
+    li.innerText = text;
     featuresList.appendChild(li);
   });
 
@@ -156,7 +163,7 @@
     `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
   document.getElementById("whatsapp-link").href = whatsappLink;
-  document.getElementById("whatsapp-float-link").href = whatsappLink;
 </script>
 
-
+</body>
+</html>
