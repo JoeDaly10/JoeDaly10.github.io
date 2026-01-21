@@ -11,59 +11,121 @@
       font-family: Arial, sans-serif;
       margin: 0;
       background: #f7f7f7;
+      line-height: 1.6;
     }
 
     header {
       background: #222;
       color: #fff;
-      padding: 25px 15px;
+      padding: 30px 15px;
       text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 10px;
     }
 
     .container {
       max-width: 900px;
       margin: auto;
-      padding: 20px;
-    }
-
-    h1, h2 {
-      margin-top: 0;
+      padding: 15px;
     }
 
     .card {
       background: #fff;
       padding: 20px;
       margin-top: 20px;
-      border-radius: 8px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      margin-top: 0;
     }
 
     .price {
-      font-size: 1.3em;
+      font-size: 1.4em;
       font-weight: bold;
     }
 
     .cta {
       background: #28a745;
       color: #fff;
-      padding: 12px 20px;
+      padding: 14px 22px;
       display: inline-block;
-      border-radius: 5px;
+      border-radius: 6px;
       text-decoration: none;
-      margin-top: 10px;
+      margin-top: 12px;
+      font-size: 1.05rem;
     }
 
     /* ===== GALLERY ===== */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 15px;
       margin-top: 15px;
     }
 
     .gallery img {
       width: 100%;
-      border-radius: 8px;
-      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 15px;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    .lightbox.close {
+      cursor: pointer;
+    }
+
+    /* ===== MOBILE POLISH ===== */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .cta {
+        width: 100%;
+        text-align: center;
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
@@ -77,7 +139,7 @@
 
 <div class="container">
 
-  <!-- ABOUT US -->
+  <!-- ABOUT -->
   <div class="card">
     <h2>About Us</h2>
     <p id="about-us-text"></p>
@@ -87,8 +149,8 @@
   <div class="card">
     <h2>Gallery</h2>
     <div class="gallery">
-      <img src="images/roofbox1.jpg" alt="Thule roof box fitted to car">
-      <img src="images/roofbox2.jpg" alt="Thule roof box side view">
+      <img src="images/roofbox1.jpg" alt="Thule roof box" onclick="openLightbox(this.src)">
+      <img src="images/roofbox2.jpg" alt="Thule roof box side view" onclick="openLightbox(this.src)">
     </div>
   </div>
 
@@ -98,7 +160,7 @@
     <p class="price" id="price-text"></p>
   </div>
 
-  <!-- WHY CHOOSE US -->
+  <!-- FEATURES -->
   <div class="card">
     <h2>Why Choose Us?</h2>
     <ul id="features-list"></ul>
@@ -115,6 +177,11 @@
     </a>
   </div>
 
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
 </div>
 
 <script>
@@ -142,27 +209,37 @@
   const whatsappNumber = "447471772335";
   const whatsappMessage = "Hi I would like to book a roof box";
 
-  /* ===== DO NOT EDIT BELOW ===== */
+  /* ===== PAGE LOGIC ===== */
 
   document.getElementById("site-title").innerText = siteTitle;
   document.getElementById("site-subtitle").innerText = siteSubtitle;
   document.getElementById("about-us-text").innerText = aboutUsText;
   document.getElementById("price-text").innerText = prices;
 
-  const featuresList = document.getElementById("features-list");
-  features.forEach(text => {
+  const list = document.getElementById("features-list");
+  features.forEach(item => {
     const li = document.createElement("li");
-    li.innerText = text;
-    featuresList.appendChild(li);
+    li.innerText = item;
+    list.appendChild(li);
   });
 
   document.getElementById("contact-email").innerText = email;
   document.getElementById("contact-phone").innerText = phone;
 
-  const whatsappLink =
+  const whatsappURL =
     `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  document.getElementById("whatsapp-link").href = whatsappURL;
 
-  document.getElementById("whatsapp-link").href = whatsappLink;
+  /* ===== LIGHTBOX ===== */
+
+  function openLightbox(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+  }
+
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
 </script>
 
 </body>
